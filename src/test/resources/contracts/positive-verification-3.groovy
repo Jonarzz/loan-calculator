@@ -25,7 +25,7 @@ Contract.make {
                 instalmentsCount: 360,
                 monthlyIncome: 2500,
                 monthlyExpenses: 2150,
-                loadAvailable: true,
+                loanAvailable: true,
                 availableAmount: 100_000,
                 totalRepayment: 104_000,
                 lastPaymentMonth: $(producer(regex('(0[1-9])|(1[0-2])-202\\d'))),

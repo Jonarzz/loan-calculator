@@ -25,7 +25,7 @@ Contract.make {
                 instalmentsCount: 100,
                 monthlyIncome: 2500,
                 monthlyExpenses: 2400,
-                loadAvailable: false
+                loanAvailable: false
         )
         headers {
             contentType('application/load.calculation.v1+json')
