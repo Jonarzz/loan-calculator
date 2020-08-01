@@ -14,7 +14,7 @@ Contract.make {
                 monthlyExpenses: 2400
         )
         headers {
-            contentType('application/load.calculation.v1+json')
+            contentType('application/loan.calculation.v1+json')
         }
     }
     response {
@@ -28,7 +28,7 @@ Contract.make {
                 loanAvailable: false
         )
         headers {
-            contentType('application/load.calculation.v1+json')
+            contentType('application/loan.calculation.v1+json')
         }
     }
 }
