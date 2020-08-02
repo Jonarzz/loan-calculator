@@ -26,9 +26,10 @@ Contract.make {
                 monthlyIncome: 2500,
                 monthlyExpenses: 2150,
                 loanAvailable: true,
+                unavailabilityReason: null,
                 availableAmount: 100_000,
                 totalRepayment: 104_000,
-                lastPaymentMonth: $(producer(regex('(0[1-9])|(1[0-2])-202\\d'))),
+                lastPaymentMonth: $(producer(regex('^((0[1-9])|(1[0-2]))-20\\d{2}$'))),
                 monthlyPayment: 288.89
         )
         headers {

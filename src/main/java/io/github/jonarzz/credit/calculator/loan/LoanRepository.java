@@ -1,4 +1,4 @@
-package io.jonarzz.credit.calculator.loan;
+package io.github.jonarzz.credit.calculator.loan;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

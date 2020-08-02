@@ -1,4 +1,4 @@
-package io.jonarzz.credit.calculator;
+package io.github.jonarzz.credit.calculator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

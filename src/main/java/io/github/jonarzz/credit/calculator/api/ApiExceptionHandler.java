@@ -1,4 +1,4 @@
-package io.jonarzz.credit.calculator.api;
+package io.github.jonarzz.credit.calculator.api;
 
 import static java.util.stream.Collectors.joining;
 
@@ -40,7 +40,7 @@ class ApiExceptionHandler {
                          .stream()
                          .map(DefaultMessageSourceResolvable::getDefaultMessage)
                          .filter(Objects::nonNull)
-                         .map(messageKey -> messageSource.getMessage(messageKey, null, locale))
+                         .map(messageCode -> messageSource.getMessage(messageCode, null, locale))
                          .collect(joining(". ", "", "."));
         return Map.of(
                 ERROR_MESSAGE_KEY, validationErrors

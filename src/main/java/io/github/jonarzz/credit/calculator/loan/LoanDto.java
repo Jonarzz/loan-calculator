@@ -1,8 +1,10 @@
-package io.jonarzz.credit.calculator.loan;
+package io.github.jonarzz.credit.calculator.loan;
 
 import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class LoanDto {
 
@@ -18,8 +20,11 @@ public class LoanDto {
     private int monthlyExpenses;
 
     private Boolean loanAvailable;
+    private String unavailabilityReason; // TODO map using i18n
+
     private Integer availableAmount;
     private Integer totalRepayment;
+    @JsonFormat(pattern = "MM-yyyy")
     private LocalDate lastPaymentMonth;
     private BigDecimal monthlyPayment;
 
@@ -71,6 +76,14 @@ public class LoanDto {
         this.loanAvailable = loanAvailable;
     }
 
+    public String getUnavailabilityReason() {
+        return unavailabilityReason;
+    }
+
+    public void setUnavailabilityReason(String unavailabilityReason) {
+        this.unavailabilityReason = unavailabilityReason;
+    }
+
     public Integer getAvailableAmount() {
         return availableAmount;
     }
@@ -101,6 +114,23 @@ public class LoanDto {
 
     public void setMonthlyPayment(BigDecimal monthlyPayment) {
         this.monthlyPayment = monthlyPayment;
+    }
+
+    @Override
+    public String toString() {
+        return "LoanDto{" +
+               "interestRate=" + interestRate +
+               ", amount=" + amount +
+               ", instalmentCount=" + instalmentCount +
+               ", monthlyIncome=" + monthlyIncome +
+               ", monthlyExpenses=" + monthlyExpenses +
+               ", loanAvailable=" + loanAvailable +
+               ", unavailabilityReason=" + unavailabilityReason +
+               ", availableAmount=" + availableAmount +
+               ", totalRepayment=" + totalRepayment +
+               ", lastPaymentMonth=" + lastPaymentMonth +
+               ", monthlyPayment=" + monthlyPayment +
+               '}';
     }
 
 }

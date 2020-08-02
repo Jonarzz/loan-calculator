@@ -8,7 +8,7 @@ Contract.make {
         url '/loan/calculation'
         body(
                 interestRate: 0.04,
-                amount: 1_000_000,
+                amount: 1_000_001,
                 instalmentCount: 360,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000
@@ -21,11 +21,13 @@ Contract.make {
         status OK()
         body(
                 interestRate: 0.04,
-                amount: 1_000_000,
+                amount: 1_000_001,
                 instalmentCount: 360,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000,
-                loanAvailable: false
+                loanAvailable: false,
+                unavailabilityReason: 'MAX_LOAN_AMOUNT_EXCEEDED',
+                availableAmount: 1_000_001
         )
         headers {
             contentType('application/loan.calculation.v1+json')

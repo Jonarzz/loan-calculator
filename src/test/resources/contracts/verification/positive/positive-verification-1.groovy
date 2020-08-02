@@ -26,10 +26,11 @@ Contract.make {
                 monthlyIncome: 5000,
                 monthlyExpenses: 2300,
                 loanAvailable: true,
+                unavailabilityReason: null,
                 availableAmount: 100_000,
                 totalRepayment: 104_000,
-                lastPaymentMonth: $(producer(regex('(0[1-9])|(1[0-2])-202\\d'))),
-                monthlyPayment: 8666.67
+                lastPaymentMonth: $(producer(regex('^((0[1-9])|(1[0-2]))-20\\d{2}$'))),
+                monthlyPayment: 866.67
         )
         headers {
             contentType('application/loan.calculation.v1+json')

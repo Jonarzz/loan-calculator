@@ -1,4 +1,4 @@
-package io.jonarzz.credit.calculator;
+package io.github.jonarzz.credit.calculator;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
@@ -15,7 +15,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-@TestPropertySource("classpath:application.properties")
+@TestPropertySource(locations = "classpath:application.properties",
+                    properties = "logging.level.io.github.jonarzz = DEBUG")
 public abstract class BaseContractTestClass {
 
     @Autowired
@@ -26,6 +27,7 @@ public abstract class BaseContractTestClass {
         RestAssuredMockMvc.webAppContextSetup(applicationContext);
     }
 
+    @SuppressWarnings("unused")
     protected void assertContainsAllMessagesEng(String message) {
         assertThat(message, allOf(containsString("Loan amount value has to be a positive number."),
                                   containsString("Instalment count value has to be a positive number."),
@@ -34,6 +36,7 @@ public abstract class BaseContractTestClass {
                                   containsString("Monthly expenses value cannot be a negative number.")));
     }
 
+    @SuppressWarnings("unused")
     protected void assertContainsAllMessagesPl(String message) {
         assertThat(message, allOf(containsString("Kwota kredytu musi być liczbą dodatnią."),
                                   containsString("Liczba rat musi być liczbą dodatnią."),

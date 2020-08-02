@@ -8,10 +8,10 @@ Contract.make {
         url '/loan/calculation'
         body(
                 interestRate: 0.04,
-                amount: 1000,
-                instalmentCount: 100,
+                amount: 100_000,
+                instalmentCount: 360,
                 monthlyIncome: 2500,
-                monthlyExpenses: 2400
+                monthlyExpenses: 2401
         )
         headers {
             contentType('application/loan.calculation.v1+json')
@@ -21,11 +21,16 @@ Contract.make {
         status OK()
         body(
                 interestRate: 0.04,
-                amount: 1000,
-                instalmentCount: 100,
+                amount: 100_000,
+                instalmentCount: 360,
                 monthlyIncome: 2500,
-                monthlyExpenses: 2400,
-                loanAvailable: false
+                monthlyExpenses: 2401,
+                loanAvailable: false,
+                unavailabilityReason: 'NET_INCOME_LESS_THAN_MIN_MONTHLY_PAYMENT',
+                availableAmount: null,
+                totalRepayment: null,
+                lastPaymentMonth: null,
+                monthlyPayment: null
         )
         headers {
             contentType('application/loan.calculation.v1+json')
