@@ -1,4 +1,4 @@
-package io.github.jonarzz.credit.calculator.common;
+package io.github.jonarzz.loan.calculator.common;
 
 import java.nio.charset.StandardCharsets;
 

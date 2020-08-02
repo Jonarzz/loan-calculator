@@ -1,13 +1,13 @@
-package io.github.jonarzz.credit.calculator;
+package io.github.jonarzz.loan.calculator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CreditCalculatorApplication {
+public class LoanCalculatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CreditCalculatorApplication.class, args);
+		SpringApplication.run(LoanCalculatorApplication.class, args);
 	}
 
 }

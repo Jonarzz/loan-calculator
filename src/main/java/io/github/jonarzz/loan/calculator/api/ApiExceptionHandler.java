@@ -1,4 +1,4 @@
-package io.github.jonarzz.credit.calculator.api;
+package io.github.jonarzz.loan.calculator.api;
 
 import static java.util.stream.Collectors.joining;
 

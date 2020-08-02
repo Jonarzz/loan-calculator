@@ -1,4 +1,4 @@
-package io.github.jonarzz.credit.calculator.loan;
+package io.github.jonarzz.loan.calculator.loan;
 
 class LoanCalculationProperties {
 

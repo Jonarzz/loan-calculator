@@ -1,9 +1,9 @@
-package io.github.jonarzz.credit.calculator.api;
+package io.github.jonarzz.loan.calculator.api;
 
 import javax.validation.Valid;
 
-import io.github.jonarzz.credit.calculator.loan.LoanDto;
-import io.github.jonarzz.credit.calculator.loan.LoanService;
+import io.github.jonarzz.loan.calculator.loan.LoanDto;
+import io.github.jonarzz.loan.calculator.loan.LoanService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;

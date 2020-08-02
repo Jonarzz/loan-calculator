@@ -1,4 +1,4 @@
-package io.github.jonarzz.credit.calculator;
+package io.github.jonarzz.loan.calculator;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;

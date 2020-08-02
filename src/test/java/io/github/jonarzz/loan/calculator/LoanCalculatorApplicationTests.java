@@ -1,10 +1,10 @@
-package io.github.jonarzz.credit.calculator;
+package io.github.jonarzz.loan.calculator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CreditCalculatorApplicationTests {
+class LoanCalculatorApplicationTests {
 
 	@Test
 	void contextLoads() {
