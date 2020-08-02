@@ -26,7 +26,7 @@ Contract.make {
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000,
                 loanAvailable: false,
-                unavailabilityReason: 'MAX_LOAN_AMOUNT_EXCEEDED',
+                unavailabilityReason: 'Loan amount is too high',
                 availableAmount: 1_000_001
         )
         headers {

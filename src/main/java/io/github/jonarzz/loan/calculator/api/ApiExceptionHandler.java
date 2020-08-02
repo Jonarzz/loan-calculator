@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
+import io.github.jonarzz.loan.calculator.common.LocaleUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;
@@ -32,9 +32,7 @@ class ApiExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     Map<String, String> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception,
                                                               HttpServletRequest request) {
-        Locale locale = Optional.ofNullable(request.getHeader(HttpHeaders.ACCEPT_LANGUAGE))
-                                .map(Locale::forLanguageTag)
-                                .orElse(Locale.US);
+        Locale locale = LocaleUtil.forTag(request.getHeader(HttpHeaders.ACCEPT_LANGUAGE));
         String validationErrors =
                 exception.getAllErrors()
                          .stream()

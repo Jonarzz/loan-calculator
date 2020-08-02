@@ -82,7 +82,7 @@
 				<version>3.0.0-SNAPSHOT</version>
 				<extensions>true</extensions>
 				<configuration>
-					<baseClassForTests>BaseContractTestClass</baseClassForTests>
+					<baseClassForTests>io.github.jonarzz.loan.calculator.BaseContractTestClass</baseClassForTests>
 					<testFramework>JUNIT5</testFramework>
 				</configuration>
 			</plugin>

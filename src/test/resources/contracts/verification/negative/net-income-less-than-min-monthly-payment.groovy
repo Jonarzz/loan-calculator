@@ -26,7 +26,7 @@ Contract.make {
                 monthlyIncome: 2500,
                 monthlyExpenses: 2401,
                 loanAvailable: false,
-                unavailabilityReason: 'NET_INCOME_LESS_THAN_MIN_MONTHLY_PAYMENT',
+                unavailabilityReason: 'Net income is too low',
                 availableAmount: null,
                 totalRepayment: null,
                 lastPaymentMonth: null,

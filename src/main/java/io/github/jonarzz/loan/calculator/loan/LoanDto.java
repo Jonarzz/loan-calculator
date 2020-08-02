@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class LoanDto {
 
@@ -20,7 +21,8 @@ public class LoanDto {
     private int monthlyExpenses;
 
     private Boolean loanAvailable;
-    private String unavailabilityReason; // TODO map using i18n
+    @JsonSerialize(using = UnavailabilityReasonSerializer.class)
+    private UnavailabilityReason unavailabilityReason;
 
     private Integer availableAmount;
     private Integer totalRepayment;
@@ -76,11 +78,11 @@ public class LoanDto {
         this.loanAvailable = loanAvailable;
     }
 
-    public String getUnavailabilityReason() {
+    public UnavailabilityReason getUnavailabilityReason() {
         return unavailabilityReason;
     }
 
-    public void setUnavailabilityReason(String unavailabilityReason) {
+    public void setUnavailabilityReason(UnavailabilityReason unavailabilityReason) {
         this.unavailabilityReason = unavailabilityReason;
     }
 
