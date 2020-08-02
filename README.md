@@ -1,4 +1,4 @@
-# credit-calculator
-[![](https://github.com/Jonarzz/credit-calculator/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/Jonarzz/credit-calculator)
+# loan-calculator
+[![](https://github.com/Jonarzz/loan-calculator/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/Jonarzz/loan-calculator)
 
-Simple credit calculator webservice
+Simple loan availability calculator webservice
