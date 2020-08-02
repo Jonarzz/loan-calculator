@@ -1,5 +1,7 @@
 package io.jonarzz.credit.calculator.loan;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,10 +13,12 @@ public class LoanService {
         this.loanRepository = loanRepository;
     }
 
-    public LoanDto calculateAvailability(LoanDto loan) {
-        // TODO map to entity
-        // TODO calculation
-        return loan;
+    @Transactional
+    public LoanDto calculateAvailability(LoanDto loanDto) {
+        Loan loan = Loan.fromDto(loanDto);
+        loan.calculateAvailability();
+        loanRepository.save(loan);
+        return loan.toDto();
     }
 
 }

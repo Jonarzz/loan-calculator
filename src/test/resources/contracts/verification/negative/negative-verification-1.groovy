@@ -1,4 +1,4 @@
-package contracts
+package contracts.verification.negative
 
 import org.springframework.cloud.contract.spec.Contract
 
@@ -9,8 +9,8 @@ Contract.make {
         body(
                 interestRate: 0.04,
                 amount: 100_000,
-                instalmentsCount: 120,
-                monthlyIncome: 5000,
+                instalmentCount: 360,
+                monthlyIncome: 2500,
                 monthlyExpenses: 2300
         )
         headers {
@@ -22,14 +22,10 @@ Contract.make {
         body(
                 interestRate: 0.04,
                 amount: 100_000,
-                instalmentsCount: 120,
-                monthlyIncome: 5000,
+                instalmentCount: 360,
+                monthlyIncome: 2500,
                 monthlyExpenses: 2300,
-                loanAvailable: true,
-                availableAmount: 100_000,
-                totalRepayment: 104_000,
-                lastPaymentMonth: $(producer(regex('(0[1-9])|(1[0-2])-202\\d'))),
-                monthlyPayment: 8666.67
+                loanAvailable: false
         )
         headers {
             contentType('application/loan.calculation.v1+json')

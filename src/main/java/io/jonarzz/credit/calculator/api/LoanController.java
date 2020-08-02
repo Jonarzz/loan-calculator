@@ -1,5 +1,7 @@
 package io.jonarzz.credit.calculator.api;
 
+import javax.validation.Valid;
+
 import io.jonarzz.credit.calculator.loan.LoanDto;
 import io.jonarzz.credit.calculator.loan.LoanService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +21,7 @@ public class LoanController {
 
     @PostMapping(consumes = Versioning.MEDIA_TYPE_APPLICATION_JSON_V1,
                  produces = Versioning.MEDIA_TYPE_APPLICATION_JSON_V1)
-    LoanDto calculateLoanAvailability(@RequestBody LoanDto loan) {
+    LoanDto calculateLoanAvailability(@RequestBody @Valid LoanDto loan) {
         return loanService.calculateAvailability(loan);
     }
 

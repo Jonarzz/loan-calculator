@@ -1,24 +1,25 @@
 package io.jonarzz.credit.calculator.loan;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class LoanDto {
 
-    @NotNull
+    @Min(value = 0, message = "loan.validation.message.interestRate.minValue")
     private double interestRate;
-    @NotNull
+    @Min(value = 1, message = "loan.validation.message.amount.minValue")
     private int amount;
-    @NotNull
-    private int instalmentsCount;
-    @NotNull
+    @Min(value = 1, message = "loan.validation.message.instalmentCount.minValue")
+    private int instalmentCount;
+    @Min(value = 0, message = "loan.validation.message.monthlyIncome.minValue")
+    private int monthlyIncome;
+    @Min(value = 0, message = "loan.validation.message.monthlyExpenses.minValue")
     private int monthlyExpenses;
-    @NotNull
-    private boolean loanAvailable;
 
-    private int availableAmount;
-    private int totalRepayment;
+    private Boolean loanAvailable;
+    private Integer availableAmount;
+    private Integer totalRepayment;
     private LocalDate lastPaymentMonth;
     private BigDecimal monthlyPayment;
 
@@ -38,12 +39,20 @@ public class LoanDto {
         this.amount = amount;
     }
 
-    public int getInstalmentsCount() {
-        return instalmentsCount;
+    public int getInstalmentCount() {
+        return instalmentCount;
     }
 
-    public void setInstalmentsCount(int instalmentsCount) {
-        this.instalmentsCount = instalmentsCount;
+    public void setInstalmentCount(int instalmentCount) {
+        this.instalmentCount = instalmentCount;
+    }
+
+    public int getMonthlyIncome() {
+        return monthlyIncome;
+    }
+
+    public void setMonthlyIncome(int monthlyIncome) {
+        this.monthlyIncome = monthlyIncome;
     }
 
     public int getMonthlyExpenses() {
@@ -54,27 +63,27 @@ public class LoanDto {
         this.monthlyExpenses = monthlyExpenses;
     }
 
-    public boolean isLoanAvailable() {
+    public Boolean isLoanAvailable() {
         return loanAvailable;
     }
 
-    public void setLoanAvailable(boolean loanAvailable) {
+    public void setLoanAvailable(Boolean loanAvailable) {
         this.loanAvailable = loanAvailable;
     }
 
-    public int getAvailableAmount() {
+    public Integer getAvailableAmount() {
         return availableAmount;
     }
 
-    public void setAvailableAmount(int availableAmount) {
+    public void setAvailableAmount(Integer availableAmount) {
         this.availableAmount = availableAmount;
     }
 
-    public int getTotalRepayment() {
+    public Integer getTotalRepayment() {
         return totalRepayment;
     }
 
-    public void setTotalRepayment(int totalRepayment) {
+    public void setTotalRepayment(Integer totalRepayment) {
         this.totalRepayment = totalRepayment;
     }
 

@@ -1,6 +1,9 @@
 package io.jonarzz.credit.calculator;
 
-import io.jonarzz.credit.calculator.api.LoanController;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.containsString;
+
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,18 +11,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
 @TestPropertySource("classpath:application.properties")
-abstract class BaseContractTestClass {
+public abstract class BaseContractTestClass {
 
     @Autowired
-    private LoanController loanController;
+    private WebApplicationContext applicationContext;
 
     @BeforeEach
     void setup() {
-        RestAssuredMockMvc.standaloneSetup(loanController);
+        RestAssuredMockMvc.webAppContextSetup(applicationContext);
+    }
+
+    protected void assertContainsAllMessagesEng(String message) {
+        assertThat(message, allOf(containsString("Loan amount value has to be a positive number."),
+                                  containsString("Instalment count value has to be a positive number."),
+                                  containsString("Interest rate value cannot be a negative number."),
+                                  containsString("Monthly income value cannot be a negative number."),
+                                  containsString("Monthly expenses value cannot be a negative number.")));
+    }
+
+    protected void assertContainsAllMessagesPl(String message) {
+        assertThat(message, allOf(containsString("Kwota kredytu musi być liczbą dodatnią."),
+                                  containsString("Liczba rat musi być liczbą dodatnią."),
+                                  containsString("Oprocentowanie nie może być ujemne."),
+                                  containsString("Miesięczne wydatki nie mogą być ujemne."),
+                                  containsString("Miesięczny dochód nie może być ujemny.")));
     }
 
 }

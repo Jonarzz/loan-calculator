@@ -1,4 +1,4 @@
-package contracts
+package contracts.api
 
 import org.springframework.cloud.contract.spec.Contract
 
@@ -9,7 +9,7 @@ Contract.make {
         body(
                 interestRate: 0.1,
                 amount: 10_000,
-                instalmentsCount: 100,
+                instalmentCount: 100,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 1000
         )

@@ -1,4 +1,4 @@
-package contracts
+package contracts.verification.negative
 
 import org.springframework.cloud.contract.spec.Contract
 
@@ -9,7 +9,7 @@ Contract.make {
         body(
                 interestRate: 0.04,
                 amount: 1_000_000,
-                instalmentsCount: 360,
+                instalmentCount: 360,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000
         )
@@ -22,7 +22,7 @@ Contract.make {
         body(
                 interestRate: 0.04,
                 amount: 1_000_000,
-                instalmentsCount: 360,
+                instalmentCount: 360,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000,
                 loanAvailable: false
