@@ -6,9 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
-@Service
 public class LoanService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoanService.class);
@@ -38,7 +36,7 @@ public class LoanService {
         LOGGER.debug("Loan availability calculation done");
         loanRepository.save(loan);
         LOGGER.debug("Saved loan entity");
-        LoanDto outputDto = toDto();
+        LoanDto outputDto = toDto(loan);
         LOGGER.debug("Is loan available: {}, unavailability reason: {}",
                      outputDto.isLoanAvailable(), outputDto.getUnavailabilityReason());
         return outputDto;
