@@ -10,7 +10,7 @@ Contract.make {
         url '/loan/calculation'
         body(
                 interestRate: 0.04,
-                amount: 100,
+                requestedAmount: 100,
                 instalmentCount: 10,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000
@@ -24,7 +24,7 @@ Contract.make {
         status OK()
         body(
                 interestRate: 0.04,
-                amount: 100,
+                requestedAmount: 100,
                 instalmentCount: 10,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000,

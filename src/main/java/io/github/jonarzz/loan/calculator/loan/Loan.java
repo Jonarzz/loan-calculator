@@ -51,6 +51,7 @@ class Loan {
     }
 
     void calculateAvailability(LoanCalculationProperties calculationProperties) {
+        loanAvailable = false;
         if (requestedAmount < calculationProperties.getMinLoanAmount()) {
             LOGGER.debug("Amount {} is less than min loan amount {}",
                          requestedAmount, calculationProperties.getMinLoanAmount());

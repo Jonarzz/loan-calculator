@@ -50,8 +50,8 @@ public class LoanService {
         return loan;
     }
 
-    LoanDto toDto() {
-        return MODEL_MAPPER.map(this, LoanDto.class);
+    LoanDto toDto(Loan loan) {
+        return MODEL_MAPPER.map(loan, LoanDto.class);
     }
 
 }
