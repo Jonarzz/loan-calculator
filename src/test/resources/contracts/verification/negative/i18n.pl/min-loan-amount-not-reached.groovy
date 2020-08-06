@@ -1,9 +1,9 @@
-package contracts.verification.negative
+package contracts.verification.negative.i18n.pl
 
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
-    description 'min loan amount not reached'
+    description 'min loan amount not reached - reason in Polish'
 
     request {
         method 'POST'
@@ -17,6 +17,7 @@ Contract.make {
         )
         headers {
             contentType 'application/loan.calculation.v1+json'
+            header "Accept-Language", 'pl'
         }
     }
 
@@ -30,7 +31,7 @@ Contract.make {
                 monthlyExpenses: 3000,
                 loanAvailable: false,
                 unavailabilityReason: 'MIN_LOAN_AMOUNT_NOT_REACHED',
-                unavailabilityReasonMessage: 'Loan amount is too low',
+                unavailabilityReasonMessage: 'Kwota kredytu jest zbyt niska',
                 availableAmount: null,
                 totalRepayment: null,
                 lastPaymentMonth: null,

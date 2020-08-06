@@ -1,22 +1,23 @@
-package contracts.verification.negative
+package contracts.verification.negative.i18n.pl
 
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
-    description 'min loan amount not reached'
+    description 'max loan amount exceeded - reason in Polish'
 
     request {
         method 'POST'
         url '/loan/calculation'
         body(
                 interestRate: 0.04,
-                amount: 100,
-                instalmentCount: 10,
+                amount: 1_000_001,
+                instalmentCount: 360,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000
         )
         headers {
             contentType 'application/loan.calculation.v1+json'
+            header "Accept-Language", 'pl'
         }
     }
 
@@ -24,17 +25,14 @@ Contract.make {
         status OK()
         body(
                 interestRate: 0.04,
-                amount: 100,
-                instalmentCount: 10,
+                amount: 1_000_001,
+                instalmentCount: 360,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000,
                 loanAvailable: false,
-                unavailabilityReason: 'MIN_LOAN_AMOUNT_NOT_REACHED',
-                unavailabilityReasonMessage: 'Loan amount is too low',
-                availableAmount: null,
-                totalRepayment: null,
-                lastPaymentMonth: null,
-                monthlyPayment: null
+                unavailabilityReason: 'MAX_LOAN_AMOUNT_EXCEEDED',
+                unavailabilityReasonMessage: 'Kwota kredytu jest zbyt wysoka',
+                availableAmount: 1_000_001
         )
         headers {
             contentType 'application/loan.calculation.v1+json'

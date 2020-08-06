@@ -3,6 +3,8 @@ package contracts.verification.negative
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
+    description 'max loan amount exceeded'
+
     request {
         method 'POST'
         url '/loan/calculation'
@@ -14,9 +16,10 @@ Contract.make {
                 monthlyExpenses: 3000
         )
         headers {
-            contentType('application/loan.calculation.v1+json')
+            contentType 'application/loan.calculation.v1+json'
         }
     }
+
     response {
         status OK()
         body(
@@ -26,11 +29,12 @@ Contract.make {
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000,
                 loanAvailable: false,
-                unavailabilityReason: 'Loan amount is too high',
+                unavailabilityReason: 'MAX_LOAN_AMOUNT_EXCEEDED',
+                unavailabilityReasonMessage: 'Loan amount is too high',
                 availableAmount: 1_000_001
         )
         headers {
-            contentType('application/loan.calculation.v1+json')
+            contentType 'application/loan.calculation.v1+json'
         }
     }
 }

@@ -3,6 +3,8 @@ package contracts.verification.negative
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
+    description 'net income less than min monthly payment'
+
     request {
         method 'POST'
         url '/loan/calculation'
@@ -14,9 +16,10 @@ Contract.make {
                 monthlyExpenses: 2401
         )
         headers {
-            contentType('application/loan.calculation.v1+json')
+            contentType 'application/loan.calculation.v1+json'
         }
     }
+
     response {
         status OK()
         body(
@@ -26,14 +29,15 @@ Contract.make {
                 monthlyIncome: 2500,
                 monthlyExpenses: 2401,
                 loanAvailable: false,
-                unavailabilityReason: 'Net income is too low',
+                unavailabilityReason: 'NET_INCOME_LESS_THAN_MIN_MONTHLY_PAYMENT',
+                unavailabilityReasonMessage: 'Net income is too low',
                 availableAmount: null,
                 totalRepayment: null,
                 lastPaymentMonth: null,
                 monthlyPayment: null
         )
         headers {
-            contentType('application/loan.calculation.v1+json')
+            contentType 'application/loan.calculation.v1+json'
         }
     }
 }

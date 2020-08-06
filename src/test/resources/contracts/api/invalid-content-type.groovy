@@ -3,6 +3,8 @@ package contracts.api
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
+    description 'should fail on not versioned media type'
+
     request {
         method 'POST'
         url '/loan/calculation'
@@ -14,9 +16,10 @@ Contract.make {
                 monthlyExpenses: 1000
         )
         headers {
-            contentType('application/json')
+            contentType 'application/json'
         }
     }
+
     response {
         status UNSUPPORTED_MEDIA_TYPE()
     }

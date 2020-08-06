@@ -1,7 +1,6 @@
 package io.github.jonarzz.loan.calculator.common;
 
 import java.util.Locale;
-import java.util.Optional;
 
 import org.springframework.context.i18n.LocaleContextHolder;
 
@@ -19,9 +18,7 @@ public class LocaleUtil {
     }
 
     public static Locale forTag(String languageTag) {
-        return Optional.ofNullable(languageTag)
-                       .map(Locale::forLanguageTag)
-                       .orElse(Locale.US);
+        return languageTag != null ? Locale.forLanguageTag(languageTag) : Locale.US;
     }
 
 }

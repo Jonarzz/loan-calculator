@@ -1,9 +1,9 @@
-package contracts.verification.positive
+package contracts.verification.negative.i18n.pl
 
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
-    description 'should return available loan parameters with requested amount - low net income and high instalment count'
+    description 'net income less than min monthly payment - reason in Polish'
 
     request {
         method 'POST'
@@ -13,10 +13,11 @@ Contract.make {
                 amount: 100_000,
                 instalmentCount: 360,
                 monthlyIncome: 2500,
-                monthlyExpenses: 2150
+                monthlyExpenses: 2401
         )
         headers {
             contentType 'application/loan.calculation.v1+json'
+            header 'Accept-Language', 'pl'
         }
     }
 
@@ -27,13 +28,14 @@ Contract.make {
                 amount: 100_000,
                 instalmentCount: 360,
                 monthlyIncome: 2500,
-                monthlyExpenses: 2150,
-                loanAvailable: true,
-                unavailabilityReason: null,
-                availableAmount: 100_000,
-                totalRepayment: 104_000,
-                lastPaymentMonth: $(producer(regex('^((0[1-9])|(1[0-2]))-20\\d{2}$'))),
-                monthlyPayment: 288.89
+                monthlyExpenses: 2401,
+                loanAvailable: false,
+                unavailabilityReason: 'NET_INCOME_LESS_THAN_MIN_MONTHLY_PAYMENT',
+                unavailabilityReasonMessage: 'Dochód miesięczny netto jest zbyt niski',
+                availableAmount: null,
+                totalRepayment: null,
+                lastPaymentMonth: null,
+                monthlyPayment: null
         )
         headers {
             contentType 'application/loan.calculation.v1+json'

@@ -3,6 +3,8 @@ package contracts.verification.positive
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
+    description 'should return available loan parameters with max amount recalculated - low net income and instalment count'
+
     request {
         method 'POST'
         url '/loan/calculation'
@@ -14,9 +16,10 @@ Contract.make {
                 monthlyExpenses: 2000
         )
         headers {
-            contentType('application/loan.calculation.v1+json')
+            contentType 'application/loan.calculation.v1+json'
         }
     }
+
     response {
         status OK()
         body(
@@ -33,7 +36,7 @@ Contract.make {
                 monthlyPayment: 500
         )
         headers {
-            contentType('application/loan.calculation.v1+json')
+            contentType 'application/loan.calculation.v1+json'
         }
     }
 }
