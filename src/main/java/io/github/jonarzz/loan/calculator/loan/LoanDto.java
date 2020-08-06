@@ -11,8 +11,8 @@ public class LoanDto {
 
     @Min(value = 0, message = "loan.validation.message.interestRate.minValue")
     private double interestRate;
-    @Min(value = 1, message = "loan.validation.message.amount.minValue")
-    private int amount;
+    @Min(value = 1, message = "loan.validation.message.requestedAmount.minValue")
+    private int requestedAmount;
     @Min(value = 1, message = "loan.validation.message.instalmentCount.minValue")
     private int instalmentCount;
     @Min(value = 0, message = "loan.validation.message.monthlyIncome.minValue")
@@ -38,12 +38,12 @@ public class LoanDto {
         this.interestRate = interestRate;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getRequestedAmount() {
+        return requestedAmount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setRequestedAmount(int requestedAmount) {
+        this.requestedAmount = requestedAmount;
     }
 
     public int getInstalmentCount() {
@@ -122,7 +122,7 @@ public class LoanDto {
     public String toString() {
         return "LoanDto{" +
                "interestRate=" + interestRate +
-               ", amount=" + amount +
+               ", amount=" + requestedAmount +
                ", instalmentCount=" + instalmentCount +
                ", monthlyIncome=" + monthlyIncome +
                ", monthlyExpenses=" + monthlyExpenses +
