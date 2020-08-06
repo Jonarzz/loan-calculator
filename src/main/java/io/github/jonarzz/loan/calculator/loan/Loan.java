@@ -12,8 +12,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 
-import org.modelmapper.ModelMapper;
-import org.modelmapper.config.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,14 +21,6 @@ class Loan {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Loan.class);
 
-    private static final ModelMapper MODEL_MAPPER = new ModelMapper();
-
-    static {
-        MODEL_MAPPER.getConfiguration()
-                    .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
-                    .setFieldMatchingEnabled(true);
-    }
-
     @Id
     @GeneratedValue
     private Long id;
@@ -38,16 +28,16 @@ class Loan {
     @NotNull
     private BigDecimal interestRate;
     @NotNull
-    private int amount;
+    private Integer requestedAmount;
     @NotNull
-    private int instalmentCount;
+    private Integer instalmentCount;
     @NotNull
-    private int monthlyIncome;
+    private Integer monthlyIncome;
     @NotNull
-    private int monthlyExpenses;
+    private Integer monthlyExpenses;
 
     @NotNull
-    private boolean loanAvailable;
+    private Boolean loanAvailable;
 
     @Enumerated(EnumType.STRING)
     private UnavailabilityReason unavailabilityReason;
@@ -60,20 +50,10 @@ class Loan {
     protected Loan() {
     }
 
-    static Loan fromDto(LoanDto dto) {
-        Loan loan = new Loan();
-        MODEL_MAPPER.map(dto, loan);
-        return loan;
-    }
-
-    LoanDto toDto() {
-        return MODEL_MAPPER.map(this, LoanDto.class);
-    }
-
     void calculateAvailability(LoanCalculationProperties calculationProperties) {
-        if (amount < calculationProperties.getMinLoanAmount()) {
+        if (requestedAmount < calculationProperties.getMinLoanAmount()) {
             LOGGER.debug("Amount {} is less than min loan amount {}",
-                         amount, calculationProperties.getMinLoanAmount());
+                         requestedAmount, calculationProperties.getMinLoanAmount());
             unavailabilityReason = UnavailabilityReason.MIN_LOAN_AMOUNT_NOT_REACHED;
             return;
         }
@@ -88,7 +68,7 @@ class Loan {
         int maxAvailableAmount = BigDecimal.valueOf(netIncome * instalmentCount)
                                            .divide(totalRate, 2, RoundingMode.UP)
                                            .intValue();
-        availableAmount = Math.min(amount, maxAvailableAmount);
+        availableAmount = Math.min(requestedAmount, maxAvailableAmount);
         if (availableAmount > calculationProperties.getMaxLoanAmount()) {
             LOGGER.debug("Available amount {} is greater than max loan amount {}",
                          availableAmount, calculationProperties.getMaxLoanAmount());
