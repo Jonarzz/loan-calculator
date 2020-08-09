@@ -3,7 +3,6 @@ package io.github.jonarzz.loan.calculator.loan;
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.config.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,20 +10,14 @@ public class LoanService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoanService.class);
 
-    private static final ModelMapper MODEL_MAPPER = new ModelMapper();
-
-    static {
-        MODEL_MAPPER.getConfiguration()
-                    .setFieldAccessLevel(Configuration.AccessLevel.PRIVATE)
-                    .setFieldMatchingEnabled(true);
-    }
-
     private LoanCalculationProperties loanCalculationProperties;
     private LoanRepository loanRepository;
+    private ModelMapper modelMapper;
 
-    LoanService(LoanCalculationProperties loanCalculationProperties, LoanRepository loanRepository) {
+    LoanService(LoanCalculationProperties loanCalculationProperties, LoanRepository loanRepository, ModelMapper modelMapper) {
         this.loanCalculationProperties = loanCalculationProperties;
         this.loanRepository = loanRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Transactional
@@ -42,14 +35,14 @@ public class LoanService {
         return outputDto;
     }
 
-    static Loan fromDto(LoanDto dto) {
+    Loan fromDto(LoanDto dto) {
         Loan loan = new Loan();
-        MODEL_MAPPER.map(dto, loan);
+        modelMapper.map(dto, loan);
         return loan;
     }
 
     LoanDto toDto(Loan loan) {
-        return MODEL_MAPPER.map(loan, LoanDto.class);
+        return modelMapper.map(loan, LoanDto.class);
     }
 
 }

@@ -1,5 +1,6 @@
 package io.github.jonarzz.loan.calculator.loan;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,8 +10,10 @@ import org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean;
 public class LoanConfiguration {
 
     @Bean
-    public LoanService loanService(LoanCalculationProperties loanCalculationProperties, LoanRepository loanRepository) {
-        return new LoanService(loanCalculationProperties, loanRepository);
+    public LoanService loanService(LoanCalculationProperties loanCalculationProperties,
+                                   LoanRepository loanRepository,
+                                   ModelMapper modelMapper) {
+        return new LoanService(loanCalculationProperties, loanRepository, modelMapper);
     }
 
     @Bean
@@ -24,6 +27,15 @@ public class LoanConfiguration {
     @Bean
     JpaRepositoryFactoryBean<LoanRepository, Loan, Long> loanRepository() {
         return new JpaRepositoryFactoryBean<>(LoanRepository.class);
+    }
+
+    @Bean
+    ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        modelMapper.getConfiguration()
+                   .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE)
+                   .setFieldMatchingEnabled(true);
+        return modelMapper;
     }
 
 }
