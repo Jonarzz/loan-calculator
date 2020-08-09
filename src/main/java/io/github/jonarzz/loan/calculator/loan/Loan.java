@@ -37,7 +37,8 @@ class Loan {
     private Integer monthlyExpenses;
 
     @NotNull
-    private Boolean loanAvailable;
+    @Enumerated(EnumType.STRING)
+    private LoanAvailability loanAvailability;
 
     @Enumerated(EnumType.STRING)
     private UnavailabilityReason unavailabilityReason;
@@ -51,7 +52,7 @@ class Loan {
     }
 
     void calculateAvailability(LoanCalculationProperties calculationProperties) {
-        loanAvailable = false;
+        loanAvailability = LoanAvailability.UNAVAILABLE;
         if (requestedAmount < calculationProperties.getMinLoanAmount()) {
             LOGGER.debug("Amount {} is less than min loan amount {}",
                          requestedAmount, calculationProperties.getMinLoanAmount());
@@ -78,7 +79,9 @@ class Loan {
         }
         totalRepayment = totalRate.multiply(BigDecimal.valueOf(availableAmount));
         monthlyPayment = totalRepayment.divide(BigDecimal.valueOf(instalmentCount), 2, RoundingMode.UP);
-        loanAvailable = true;
+        loanAvailability = availableAmount.equals(requestedAmount)
+                           ? LoanAvailability.AVAILABLE
+                           : LoanAvailability.AVAILABLE_CONDITIONALLY;
         lastPaymentMonth = LocalDate.now()
                                     .plusMonths(instalmentCount + 1);
     }

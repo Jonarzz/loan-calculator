@@ -28,7 +28,7 @@ Contract.make {
                 instalmentCount: 360,
                 monthlyIncome: 2500,
                 monthlyExpenses: 2150,
-                loanAvailable: true,
+                loanAvailability: 'AVAILABLE',
                 unavailabilityReason: null,
                 availableAmount: 100_000,
                 totalRepayment: 104_000,

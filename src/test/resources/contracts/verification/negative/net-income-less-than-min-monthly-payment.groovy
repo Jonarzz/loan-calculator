@@ -28,7 +28,7 @@ Contract.make {
                 instalmentCount: 360,
                 monthlyIncome: 2500,
                 monthlyExpenses: 2401,
-                loanAvailable: false,
+                loanAvailability: 'UNAVAILABLE',
                 unavailabilityReason: 'NET_INCOME_LESS_THAN_MIN_MONTHLY_PAYMENT',
                 unavailabilityReasonMessage: 'Net income is too low',
                 availableAmount: null,

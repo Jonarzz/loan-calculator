@@ -29,7 +29,7 @@ Contract.make {
                 instalmentCount: 360,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000,
-                loanAvailable: false,
+                loanAvailability: 'UNAVAILABLE',
                 unavailabilityReason: 'MAX_LOAN_AMOUNT_EXCEEDED',
                 unavailabilityReasonMessage: 'Kwota kredytu jest zbyt wysoka',
                 availableAmount: 1_000_001

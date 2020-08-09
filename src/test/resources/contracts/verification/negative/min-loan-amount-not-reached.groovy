@@ -28,7 +28,7 @@ Contract.make {
                 instalmentCount: 10,
                 monthlyIncome: 10_000,
                 monthlyExpenses: 3000,
-                loanAvailable: false,
+                loanAvailability: 'UNAVAILABLE',
                 unavailabilityReason: 'MIN_LOAN_AMOUNT_NOT_REACHED',
                 unavailabilityReasonMessage: 'Loan amount is too low',
                 availableAmount: null,

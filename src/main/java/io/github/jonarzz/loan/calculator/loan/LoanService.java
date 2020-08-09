@@ -30,8 +30,8 @@ public class LoanService {
         loanRepository.save(loan);
         LOGGER.debug("Saved loan entity");
         LoanDto outputDto = toDto(loan);
-        LOGGER.debug("Is loan available: {}, unavailability reason: {}",
-                     outputDto.isLoanAvailable(), outputDto.getUnavailabilityReason());
+        LOGGER.debug("Loan availability: {}, unavailability reason: {}",
+                     outputDto.getLoanAvailability(), outputDto.getUnavailabilityReason());
         return outputDto;
     }
 

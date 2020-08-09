@@ -20,7 +20,7 @@ public class LoanDto {
     @Min(value = 0, message = "loan.validation.message.monthlyExpenses.minValue")
     private int monthlyExpenses;
 
-    private Boolean loanAvailable;
+    private LoanAvailability loanAvailability;
     @JsonSerialize(using = UnavailabilityReasonSerializer.class)
     private UnavailabilityReason unavailabilityReason;
 
@@ -70,12 +70,12 @@ public class LoanDto {
         this.monthlyExpenses = monthlyExpenses;
     }
 
-    public Boolean isLoanAvailable() {
-        return loanAvailable;
+    public LoanAvailability getLoanAvailability() {
+        return loanAvailability;
     }
 
-    public void setLoanAvailable(Boolean loanAvailable) {
-        this.loanAvailable = loanAvailable;
+    public void setLoanAvailability(LoanAvailability loanAvailability) {
+        this.loanAvailability = loanAvailability;
     }
 
     public UnavailabilityReason getUnavailabilityReason() {
@@ -126,7 +126,7 @@ public class LoanDto {
                ", instalmentCount=" + instalmentCount +
                ", monthlyIncome=" + monthlyIncome +
                ", monthlyExpenses=" + monthlyExpenses +
-               ", loanAvailable=" + loanAvailable +
+               ", loanAvailability=" + loanAvailability +
                ", unavailabilityReason=" + unavailabilityReason +
                ", availableAmount=" + availableAmount +
                ", totalRepayment=" + totalRepayment +
